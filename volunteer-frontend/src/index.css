@@ -1,0 +1,211 @@
+:root {
+  /* Color tokens — indigo (trust/structure) + marigold (community, warmth, Indian volunteering imagery) */
+  --ink: #1F2A44;          /* deep indigo — primary text, headers */
+  --ink-soft: #4A5577;     /* muted indigo for secondary text */
+  --paper: #FAF6F0;        /* warm off-white background */
+  --paper-raised: #FFFFFF; /* card surfaces */
+  --marigold: #E8A33D;     /* accent — CTAs, highlights */
+  --marigold-deep: #C8842A;
+  --teal: #2F6F62;         /* success / approved */
+  --teal-soft: #E4EFEC;
+  --terracotta: #C25450;   /* danger / rejected */
+  --terracotta-soft: #F7E6E5;
+  --amber-soft: #FBEDD8;
+  --line: #E5DFD3;         /* hairline borders */
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Work Sans', sans-serif;
+
+  --radius: 10px;
+  --shadow-card: 0 1px 2px rgba(31, 42, 68, 0.06), 0 4px 16px rgba(31, 42, 68, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+input, select, textarea {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+
+/* Focus visibility — accessibility */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--marigold-deep);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- Shared primitives ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn-primary:hover {
+  background: #2c3a5e;
+}
+
+.btn-accent {
+  background: var(--marigold);
+  color: var(--ink);
+}
+.btn-accent:hover {
+  background: var(--marigold-deep);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--ink-soft);
+}
+.btn-ghost:hover {
+  background: var(--amber-soft);
+}
+
+.btn-danger {
+  background: transparent;
+  border-color: var(--terracotta);
+  color: var(--terracotta);
+}
+.btn-danger:hover {
+  background: var(--terracotta-soft);
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+}
+
+.card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow-card);
+}
+
+.field-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+
+.field-input {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+}
+.field-input:focus {
+  border-color: var(--marigold-deep);
+  background: var(--paper-raised);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.badge-pending { background: var(--amber-soft); color: var(--marigold-deep); }
+.badge-approved { background: var(--teal-soft); color: var(--teal); }
+.badge-rejected { background: var(--terracotta-soft); color: var(--terracotta); }
+.badge-suspended { background: #ECEAE3; color: var(--ink-soft); }
+.badge-admin { background: var(--ink); color: var(--paper); }
+.badge-volunteer { background: var(--amber-soft); color: var(--ink-soft); }
+
+.error-banner {
+  background: var(--terracotta-soft);
+  color: var(--terracotta);
+  border: 1px solid #E8C2C0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  margin-bottom: 14px;
+}
+
+/* Signature wing divider — ties visual identity to "NayePankh" (new wings) */
+.wing-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--marigold-deep);
+  opacity: 0.7;
+  margin: 4px 0 18px;
+}
+.wing-divider svg {
+  width: 22px;
+  height: 14px;
+  flex-shrink: 0;
+}
+.wing-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
