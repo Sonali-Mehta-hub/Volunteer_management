@@ -101,10 +101,10 @@ async def admin_test(admin: dict = Depends(get_current_admin)):
 @app.get("/admin/volunteers")
 async def list_volunteers(admin: dict = Depends(get_current_admin)):
     db = get_db()
-    cursor = db.volunteers.find({}, {"password": 0})  # password field exclude karo
+    cursor = db.volunteers.find({"role": "volunteer"}, {"password": 0}) 
     volunteers = await cursor.to_list(length=100)
     
-    # ObjectId ko string me convert karna padega, JSON me directly nahi ja sakta
+    
     for v in volunteers:
         v["_id"] = str(v["_id"])
     

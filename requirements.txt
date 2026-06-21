@@ -8,6 +8,6 @@ pydantic==2.13.4
 email-validator==2.3.0
 pymongo==4.17.0
 certifi==2026.6.17
-bcrypt==5.0.0
+bcrypt==4.0.1
 dnspython==2.8.0
 typing_extensions==4.15.0

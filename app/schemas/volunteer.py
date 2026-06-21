@@ -12,7 +12,7 @@ class VolunteerLogin(BaseModel):
     password: str
 
 class StatusUpdate(BaseModel):
-    status: str  # "approved" ya "rejected"
+    status: str  
 
 class RoleUpdate(BaseModel):
-    role: str  # "admin" ya "volunteer"
+    role: str  
